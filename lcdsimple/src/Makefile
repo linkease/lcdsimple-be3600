@@ -12,6 +12,7 @@ BIN = lcdsimple
 #Collect the files to compile
 MAINSRC = ./main.c ./fetch_data.c cJSON.c cJSON_Utils.c
 CFLAGS2 = "-I$(LVGL_DIR)/lvgl/src"
+PRJ_DIR = $(LVGL_DIR)/ui
 
 include $(LVGL_DIR)/lvgl/lvgl.mk
 include $(LVGL_DIR)/lv_drivers/lv_drivers.mk
