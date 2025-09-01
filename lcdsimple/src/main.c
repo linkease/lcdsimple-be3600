@@ -65,6 +65,7 @@ int main(void)
     //printf("HDMI Resolution: %dx%d, %dx%d\n", width, height, LV_HOR_RES, LV_VER_RES);
     disp_hor = width; 
     disp_ver = height;
+    printf("width=%d,height=%d\n", width, height);
 
     /*A small buffer for LittlevGL to draw the screen's content*/
     static lv_color_t sbuf0[DISP_BUF_SIZE], sbuf1[DISP_BUF_SIZE];
@@ -107,7 +108,7 @@ int main(void)
 	#endif
 
   setup_ui(&guider_ui);
-  setup_scr_screen(&guider_ui);
+  setup_scr_screen_1(&guider_ui);
 	// lv_ui_entry();
   timer = lv_timer_create(my_timer, 2000, NULL);
 
