@@ -130,7 +130,7 @@
 /* The stack size of the drawing thread.
  * NOTE: If FreeType or ThorVG is enabled, it is recommended to set it to 32KB or more.
  */
-#define LV_DRAW_THREAD_STACK_SIZE    (8 * 1024)   /*[bytes]*/
+#define LV_DRAW_THREAD_STACK_SIZE    (32 * 1024)   /*[bytes]*/
 
 #define LV_USE_DRAW_SW 1
 #if LV_USE_DRAW_SW == 1
@@ -323,11 +323,11 @@
 
 /*Enable asserts if an operation is failed or an invalid data is found.
  *If LV_USE_LOG is enabled an error message will be printed on failure*/
-#define LV_USE_ASSERT_NULL          1   /*Check if the parameter is NULL. (Very fast, recommended)*/
-#define LV_USE_ASSERT_MALLOC        1   /*Checks is the memory is successfully allocated or no. (Very fast, recommended)*/
-#define LV_USE_ASSERT_STYLE         1
-#define LV_USE_ASSERT_MEM_INTEGRITY 1
-#define LV_USE_ASSERT_OBJ           1
+#define LV_USE_ASSERT_NULL          0   /*Check if the parameter is NULL. (Very fast, recommended)*/
+#define LV_USE_ASSERT_MALLOC        0   /*Checks is the memory is successfully allocated or no. (Very fast, recommended)*/
+#define LV_USE_ASSERT_STYLE         0
+#define LV_USE_ASSERT_MEM_INTEGRITY 0
+#define LV_USE_ASSERT_OBJ           0
 
 /*Add a custom handler when assert happens e.g. to restart the MCU*/
 #define LV_ASSERT_HANDLER_INCLUDE <stdint.h>
@@ -401,7 +401,7 @@
 
 /* VG-Lite Simulator */
 /*Requires: LV_USE_THORVG_INTERNAL or LV_USE_THORVG_EXTERNAL */
-#define LV_USE_VG_LITE_THORVG  0
+#define LV_USE_VG_LITE_THORVG  1
 
 #if LV_USE_VG_LITE_THORVG
 
@@ -634,7 +634,7 @@
 
 #define LV_USE_LIST       1
 
-#define LV_USE_LOTTIE     1
+#define LV_USE_LOTTIE     0
 
 #define LV_USE_MENU       1
 
@@ -787,7 +787,7 @@
 #define LV_USE_LIBJPEG_TURBO 0
 
 /*GIF decoder library*/
-#define LV_USE_GIF 0
+#define LV_USE_GIF 1
 #if LV_USE_GIF
     /*GIF decoder accelerate*/
     #define LV_GIF_CACHE_DECODE_DATA 0
@@ -807,7 +807,7 @@
 #define LV_USE_BARCODE 1
 
 /*FreeType library*/
-#define LV_USE_FREETYPE 0
+#define LV_USE_FREETYPE 1
 #if LV_USE_FREETYPE
     /*Let FreeType to use LVGL memory and file porting*/
     #define LV_FREETYPE_USE_LVGL_PORT 0
@@ -833,7 +833,7 @@
 #define LV_USE_VECTOR_GRAPHIC  1
 
 /* Enable ThorVG (vector graphics library) from the src/libs folder */
-#define LV_USE_THORVG_INTERNAL 1 
+#define LV_USE_THORVG_INTERNAL 1
 
 /* Enable ThorVG by assuming that its installed and linked to the project */
 #define LV_USE_THORVG_EXTERNAL 0
@@ -1026,7 +1026,7 @@
 #define LV_USE_TFT_ESPI         0
 
 /*Driver for evdev input devices*/
-#define LV_USE_EVDEV    1
+#define LV_USE_EVDEV    0
 
 /*Driver for libinput input devices*/
 #define LV_USE_LIBINPUT    0
