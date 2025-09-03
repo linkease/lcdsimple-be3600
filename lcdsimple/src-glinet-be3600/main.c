@@ -1,12 +1,15 @@
 #include "lvgl/lvgl.h"
-#include "lvgl/demos/lv_demos.h"
+//#include "lvgl/demos/lv_demos.h"
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "gui_guider.h"
 
 #define DISP_BUF_SIZE (76*284)
+
+lv_ui guider_ui = {0};
 
 static const char *getenv_default(const char *name, const char *dflt)
 {
@@ -121,7 +124,8 @@ int main(void)
     //lv_demo_widgets_start_slideshow();
     //lv_demo_flex_layout();
     //lv_example_001();
-    lv_example_002();
+    //lv_example_002();
+    setup_ui(&guider_ui);
 
     /*Handle LVGL tasks*/
     while(1) {
