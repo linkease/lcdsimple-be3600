@@ -4,6 +4,8 @@
 # GUI Guider fonts  
 add_subdirectory(guider_fonts)
 
+add_subdirectory(images)
+
 # GUI Guider customer fonts
 #add_subdirectory(guider_customer_fonts)
 

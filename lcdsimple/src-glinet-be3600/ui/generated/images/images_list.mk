@@ -1,1 +1,1 @@
-GEN_CSRCS += 
+GEN_CSRCS += _xuenze_RGB565A8_15x15.c _cirle_back_RGB565A8_20x20.c _file_RGB565A8_12x12.c _rect_RGB565A8_273x64.c _rect_RGB565A8_57x34.c _black_rect_RGB565A8_57x36.c _black_rect_RGB565A8_200x36.c _black_xuanze_RGB565A8_13x13.c

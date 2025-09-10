@@ -19,13 +19,84 @@ extern "C" {
 typedef struct
 {
   
-	lv_obj_t *screen;
-	bool screen_del;
-	lv_obj_t *screen_label_3;
-	lv_obj_t *screen_label_1;
-	lv_obj_t *screen_label_2;
-	lv_obj_t *screen_btn_1;
-	lv_obj_t *screen_btn_1_label;
+	lv_obj_t *First_page;
+	bool First_page_del;
+	lv_obj_t *First_page_label_1;
+	lv_obj_t *First_page_label_2;
+	lv_obj_t *First_page_label_3;
+	lv_obj_t *First_page_label_4;
+	lv_obj_t *First_page_label_5;
+	lv_obj_t *First_page_img_1;
+	lv_obj_t *First_page_label_6;
+	lv_obj_t *First_page_label_7;
+	lv_obj_t *First_page_img_2;
+	lv_obj_t *First_page_img_3;
+	lv_obj_t *First_page_label_8;
+	lv_obj_t *First_page_label_9;
+	lv_obj_t *IP_page;
+	bool IP_page_del;
+	lv_obj_t *IP_page_label_1;
+	lv_obj_t *IP_page_img_1;
+	lv_obj_t *IP_page_img_2;
+	lv_obj_t *IP_page_img_3;
+	lv_obj_t *IP_page_img_4;
+	lv_obj_t *IP_page_img_5;
+	lv_obj_t *IP_page_label_3;
+	lv_obj_t *IP_page_img_6;
+	lv_obj_t *IP_page_img_7;
+	lv_obj_t *IP_page_img_8;
+	lv_obj_t *IP_page_label_4;
+	lv_obj_t *IP_page_label_5;
+	lv_obj_t *IP_page_label_6;
+	lv_obj_t *IP_page_label_7;
+	lv_obj_t *ExNet_page;
+	bool ExNet_page_del;
+	lv_obj_t *ExNet_page_label_1;
+	lv_obj_t *ExNet_page_img_1;
+	lv_obj_t *ExNet_page_img_2;
+	lv_obj_t *ExNet_page_img_3;
+	lv_obj_t *ExNet_page_img_4;
+	lv_obj_t *ExNet_page_img_5;
+	lv_obj_t *ExNet_page_label_3;
+	lv_obj_t *ExNet_page_img_6;
+	lv_obj_t *ExNet_page_img_7;
+	lv_obj_t *ExNet_page_img_8;
+	lv_obj_t *ExNet_page_label_4;
+	lv_obj_t *ExNet_page_label_5;
+	lv_obj_t *ExNet_page_label_6;
+	lv_obj_t *ExNet_page_label_8;
+	lv_obj_t *ExNet_page_label_9;
+	lv_obj_t *ExNet_page_label_10;
+	lv_obj_t *ExNet_page_label_11;
+	lv_obj_t *ExNet_page_label_12;
+	lv_obj_t *ExNet_page_label_13;
+	lv_obj_t *ExNet_page_label_14;
+	lv_obj_t *ExNet_page_label_15;
+	lv_obj_t *ExNet_page_img_9;
+	lv_obj_t *ExNet_page_img_10;
+	lv_obj_t *ExNet_page_label_16;
+	lv_obj_t *ExNet_page_label_17;
+	lv_obj_t *last_page;
+	bool last_page_del;
+	lv_obj_t *last_page_label_1;
+	lv_obj_t *last_page_label_3;
+	lv_obj_t *last_page_label_4;
+	lv_obj_t *last_page_arc_1;
+	lv_obj_t *last_page_arc_2;
+	lv_obj_t *last_page_label_5;
+	lv_obj_t *last_page_label_6;
+	lv_obj_t *last_page_label_7;
+	lv_obj_t *last_page_label_8;
+	lv_obj_t *last_page_label_9;
+	lv_obj_t *last_page_label_10;
+	lv_obj_t *last_page_label_11;
+	lv_obj_t *last_page_label_12;
+	lv_obj_t *last_page_label_13;
+	lv_obj_t *last_page_bar_1;
+	lv_obj_t *last_page_bar_2;
+	lv_obj_t *last_page_bar_3;
+	lv_obj_t *last_page_label_14;
+	lv_obj_t *last_page_dontouch;
 }lv_ui;
 
 typedef void (*ui_setup_scr_t)(lv_ui * ui);
@@ -53,12 +124,27 @@ void init_keyboard(lv_ui *ui);
 extern lv_ui guider_ui;
 
 
-void setup_scr_screen(lv_ui *ui);
+void setup_scr_First_page(lv_ui *ui);
+void setup_scr_IP_page(lv_ui *ui);
+void setup_scr_ExNet_page(lv_ui *ui);
+void setup_scr_last_page(lv_ui *ui);
+LV_IMAGE_DECLARE(_xuenze_RGB565A8_15x15);
+LV_IMAGE_DECLARE(_cirle_back_RGB565A8_20x20);
+LV_IMAGE_DECLARE(_file_RGB565A8_12x12);
+LV_IMAGE_DECLARE(_rect_RGB565A8_273x64);
+LV_IMAGE_DECLARE(_rect_RGB565A8_57x34);
+LV_IMAGE_DECLARE(_black_rect_RGB565A8_57x36);
+LV_IMAGE_DECLARE(_black_rect_RGB565A8_200x36);
+LV_IMAGE_DECLARE(_black_xuanze_RGB565A8_13x13);
 
 LV_FONT_DECLARE(lv_font_montserratMedium_16)
-LV_FONT_DECLARE(lv_font_SourceHanSansCN_Normal_16)
-LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_16)
-LV_FONT_DECLARE(lv_font_montserratMedium_12)
+LV_FONT_DECLARE(lv_font_SourceHanSansCN_Normal_11)
+LV_FONT_DECLARE(lv_font_SourceHanSansCN_Bold_13)
+LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_11)
+LV_FONT_DECLARE(lv_font_SourceHanSansCN_Bold_16)
+LV_FONT_DECLARE(lv_font_SourceHanSansCN_Bold_10)
+LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_12)
+LV_FONT_DECLARE(lv_font_SourceHanSerifSC_Regular_10)
 
 
 #ifdef __cplusplus

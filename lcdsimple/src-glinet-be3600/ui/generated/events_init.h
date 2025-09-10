@@ -18,6 +18,10 @@ extern "C" {
 
 void events_init(lv_ui *ui);
 
+void events_init_First_page(lv_ui *ui);
+void events_init_IP_page(lv_ui *ui);
+void events_init_ExNet_page(lv_ui *ui);
+void events_init_last_page(lv_ui *ui);
 
 #ifdef __cplusplus
 }

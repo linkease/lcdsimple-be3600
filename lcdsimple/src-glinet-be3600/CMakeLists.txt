@@ -12,17 +12,16 @@ target_include_directories(lvgl PUBLIC ${PROJECT_SOURCE_DIR})
 
 set(PRJ_MAIN "main" CACHE STRING "Name of the main executable target")
 
+add_executable(${PRJ_MAIN} main.c mouse_cursor_icon.c)
 add_subdirectory(ui/generated)
 add_subdirectory(ui/custom)
 
-add_executable(${PRJ_MAIN} main.c mouse_cursor_icon.c)
+#include(${CMAKE_CURRENT_LIST_DIR}/lvgl/tests/FindLibDRM.cmake)
+#include_directories(${Libdrm_INCLUDE_DIRS})
 
-include(${CMAKE_CURRENT_LIST_DIR}/lvgl/tests/FindLibDRM.cmake)
-include_directories(${Libdrm_INCLUDE_DIRS})
-
-find_package(SDL2)
-find_package(SDL2_image)
-include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
+#find_package(SDL2)
+#find_package(SDL2_image)
+#include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 
 target_link_libraries(${PRJ_MAIN} lvgl lvgl::examples lvgl::demos lvgl::thorvg ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${Libdrm_LIBRARIES} m pthread)
 add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/main DEPENDS ${PRJ_MAIN})
