@@ -165,14 +165,14 @@ void setup_scr_First_page(lv_ui *ui)
     ui->First_page_label_6 = lv_label_create(ui->First_page);
     lv_obj_set_pos(ui->First_page_label_6, 38, 21);
     lv_obj_set_size(ui->First_page_label_6, 48, 23);
-    lv_label_set_text(ui->First_page_label_6, "检测中");
+    lv_label_set_text(ui->First_page_label_6, "已联网");
     lv_label_set_long_mode(ui->First_page_label_6, LV_LABEL_LONG_WRAP);
 
     //Write style for First_page_label_6, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
     lv_obj_set_style_border_width(ui->First_page_label_6, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_radius(ui->First_page_label_6, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_color(ui->First_page_label_6, lv_color_hex(0xffffff), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->First_page_label_6, &lv_font_SourceHanSansCN_Bold_13, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->First_page_label_6, font_shs_13b, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui->First_page_label_6, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_letter_space(ui->First_page_label_6, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui->First_page_label_6, 0, LV_PART_MAIN|LV_STATE_DEFAULT);

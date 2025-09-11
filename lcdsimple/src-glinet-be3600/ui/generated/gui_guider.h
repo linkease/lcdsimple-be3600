@@ -15,6 +15,15 @@ extern "C" {
 
 #include "lvgl.h"
 
+#define ASSET_PATH   "/usr/share/lcdsimple/assets/"
+#define FONT_PATH   "/usr/share/lcdsimple/assets/"
+
+extern const lv_font_t *font_shs_10b;
+extern const lv_font_t *font_shs_13b;
+extern const lv_font_t *font_shs_16b;
+extern const lv_font_t *font_shs_10r;
+extern const lv_font_t *font_shs_8b;
+
 enum Page {
 	  PAGE_NONE = 0,
     PAGE_1 = 1,

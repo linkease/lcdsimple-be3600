@@ -114,6 +114,10 @@ int main(void)
     lv_indev_init();
 
     setup_ui(&guider_ui);
+
+    pthread_t thread;
+    pthread_create(&thread, NULL, read_data_thread, NULL);
+
     timer = lv_timer_create(my_timer, 2000, NULL);
 
     /*Handle LVGL tasks*/

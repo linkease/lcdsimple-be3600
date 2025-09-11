@@ -84,11 +84,56 @@ void setup_bottom_layer(void)
     lv_theme_apply(lv_layer_bottom());
 }
 
+const lv_font_t *font_shs_10b;
+const lv_font_t *font_shs_13b;
+const lv_font_t *font_shs_16b;
+const lv_font_t *font_shs_10r;
+const lv_font_t *font_shs_8b;
+void lv_font_init(void)
+{
+    static lv_font_t* shs_10b;
+    static lv_font_t* shs_13b;
+    static lv_font_t* shs_16b;
+    static lv_font_t* shs_10r;
+    static lv_font_t* shs_8b;
+    
+    // Default scale factor if not defined
+    int scale = 10;
+
+    shs_10b = lv_freetype_font_create(FONT_PATH"SourceHanSansCN-Bold.otf",
+                                     LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
+                                     10 * scale / 10,
+                                     LV_FREETYPE_FONT_STYLE_NORMAL);
+    shs_13b = lv_freetype_font_create(FONT_PATH"SourceHanSansCN-Bold.otf",
+                                     LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
+                                     13 * scale / 10,
+                                     LV_FREETYPE_FONT_STYLE_NORMAL);
+    shs_16b = lv_freetype_font_create(FONT_PATH"SourceHanSansCN-Bold.otf",
+                                     LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
+                                     16 * scale / 10,
+                                     LV_FREETYPE_FONT_STYLE_NORMAL);
+    shs_10r = lv_freetype_font_create(FONT_PATH"SourceHanSansCN-Normal.otf",
+                                     LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
+                                     10 * scale / 10,
+                                     LV_FREETYPE_FONT_STYLE_NORMAL);
+    shs_8b = lv_freetype_font_create(FONT_PATH"SourceHanSansCN-Bold.otf",
+                                    LV_FREETYPE_FONT_RENDER_MODE_BITMAP,
+                                    8 * scale / 10,
+                                    LV_FREETYPE_FONT_STYLE_NORMAL);
+
+    font_shs_10b = shs_10b;
+    font_shs_13b = shs_13b;
+    font_shs_16b = shs_16b;
+    font_shs_10r = shs_10r;
+    font_shs_8b = shs_8b;
+}
+
 void setup_ui(lv_ui *ui)
 {
     setup_bottom_layer();
     init_scr_del_flag(ui);
     init_keyboard(ui);
+    lv_font_init();
     setup_scr_First_page(ui);
     lv_screen_load(ui->First_page);
 }
@@ -106,9 +151,11 @@ void init_keyboard(lv_ui *ui)
 static void get_date(char* date, char* time);
 void scr_update_page1(lv_ui *ui, monitor_info_t* info) {
     if('\0' == info->net_err[0]) {
+        printf("set conn yes\n");
         lv_label_set_text(ui->First_page_label_6, "已联网");
         lv_obj_clear_flag(ui->First_page_img_1, LV_OBJ_FLAG_HIDDEN);
     } else {
+        printf("set no conn\n");
         lv_label_set_text(ui->First_page_label_6, info->net_err);
         lv_obj_add_flag(ui->First_page_img_1, LV_OBJ_FLAG_HIDDEN);
     }
