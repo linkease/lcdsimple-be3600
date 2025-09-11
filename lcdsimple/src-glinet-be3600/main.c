@@ -5,11 +5,20 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <string.h>
+#include "cJSON.h"
+#include "fetch_data.h"
 #include "gui_guider.h"
 
 #define DISP_BUF_SIZE (76*284)
 
 lv_ui guider_ui = {0};
+lv_timer_t *timer;
+static void my_timer(lv_timer_t * _x);
+static void update_by_monitor(monitor_info_t *info)
 
 static const char *getenv_default(const char *name, const char *dflt)
 {
@@ -64,6 +73,29 @@ static void lv_indev_init(void)
 #endif
 }
 
+static void my_timer(lv_timer_t * _x)
+{
+  (void)(_x);
+  monitor_info_t *info = get_monitor_info();
+  update_by_monitor(info);
+}
+
+static void update_by_monitor(monitor_info_t *info) 
+{
+  int ret;
+  if(info->request_cnt % 5 == 0) {
+    ret = read_info_from_shell(1);
+  } else {
+    ret = read_info_from_shell(0);
+  }
+  info->request_cnt++;
+  if (0 != ret) {
+    fprintf(stderr, "curl ret=%d\n", ret);
+    return;
+  }
+  home_scr_update();
+}
+
 int main(void)
 {
     lv_init();
@@ -73,11 +105,12 @@ int main(void)
     lv_indev_init();
 
     setup_ui(&guider_ui);
+    timer = lv_timer_create(my_timer, 2000, NULL);
 
     /*Handle LVGL tasks*/
     while(1) {
         lv_timer_handler();
-        usleep(5000);
+        usleep(1000);
     }
 
     return 0;

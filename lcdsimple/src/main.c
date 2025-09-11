@@ -159,8 +159,8 @@ uint32_t custom_tick_get(void)
 static void my_timer(lv_timer_t * _x)
 {
   (void)(_x);
-  //monitor_info_t *info = get_monitor_info();
-  //update_by_monitor(info);
+  monitor_info_t *info = get_monitor_info();
+  update_by_monitor(info);
 }
 
 static void update_by_monitor(monitor_info_t *info) 
