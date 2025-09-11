@@ -12,7 +12,7 @@ target_include_directories(lvgl PUBLIC ${PROJECT_SOURCE_DIR})
 
 set(PRJ_MAIN "main" CACHE STRING "Name of the main executable target")
 
-add_executable(${PRJ_MAIN} main.c mouse_cursor_icon.c)
+add_executable(${PRJ_MAIN} main.c mouse_cursor_icon.c cJSON.c cJSON_Utils.c fetch_data.c)
 add_subdirectory(ui/generated)
 add_subdirectory(ui/custom)
 

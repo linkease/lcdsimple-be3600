@@ -18,7 +18,7 @@
 lv_ui guider_ui = {0};
 lv_timer_t *timer;
 static void my_timer(lv_timer_t * _x);
-static void update_by_monitor(monitor_info_t *info)
+static void update_by_monitor(monitor_info_t *info);
 
 static const char *getenv_default(const char *name, const char *dflt)
 {
@@ -80,6 +80,7 @@ static void my_timer(lv_timer_t * _x)
   update_by_monitor(info);
 }
 
+extern void home_scr_update();
 static void update_by_monitor(monitor_info_t *info) 
 {
   int ret;
