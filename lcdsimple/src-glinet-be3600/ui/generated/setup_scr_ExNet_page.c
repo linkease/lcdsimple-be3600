@@ -18,6 +18,7 @@
 
 void setup_scr_ExNet_page(lv_ui *ui)
 {
+    printf("setup exnet page\n");
     //Write codes ExNet_page
     ui->ExNet_page = lv_obj_create(NULL);
     lv_obj_set_size(ui->ExNet_page, 284, 100);
@@ -512,7 +513,7 @@ void setup_scr_ExNet_page(lv_ui *ui)
     lv_obj_set_style_shadow_width(ui->ExNet_page_label_17, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of ExNet_page.
-
+    ui->curr_page = PAGE_2;
 
     //Update current screen layout.
     lv_obj_update_layout(ui->ExNet_page);

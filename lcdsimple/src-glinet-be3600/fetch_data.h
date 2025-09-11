@@ -44,7 +44,7 @@ typedef struct
 } monitor_info_t;
 
 monitor_info_t* get_monitor_info();
-int read_info_from_shell(int use_disk);
+int read_info_from_shell(monitor_info_t *info, int use_disk);
 
 #ifdef __cplusplus
 }

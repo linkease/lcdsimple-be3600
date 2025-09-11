@@ -18,7 +18,6 @@
 lv_ui guider_ui = {0};
 lv_timer_t *timer;
 static void my_timer(lv_timer_t * _x);
-static void update_by_monitor(monitor_info_t *info);
 
 static const char *getenv_default(const char *name, const char *dflt)
 {
@@ -73,28 +72,37 @@ static void lv_indev_init(void)
 #endif
 }
 
+static monitor_info_t s_monitor_info2 = {0};
+static monitor_info_t s_monitor_info3 = {0};
+static pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
+void *read_data_thread(void *arg) {
+    int ret;
+    while (1) {
+        monitor_info_t *info = &s_monitor_info2; 
+        if(info->request_cnt % 5 == 0) { 
+            ret = read_info_from_shell(info, 1); 
+        } else { 
+            ret = read_info_from_shell(info, 0); 
+        } 
+        info->request_cnt++;
+        if (0 == ret) {
+            pthread_mutex_lock(&g_mutex);
+            memcpy(&s_monitor_info3, info, sizeof(monitor_info_t));
+            pthread_mutex_unlock(&g_mutex);
+        }
+        usleep(2000000);  // 2000ms
+    }
+}
+
+extern void home_scr_update(lv_ui *ui, monitor_info_t *info);
 static void my_timer(lv_timer_t * _x)
 {
   (void)(_x);
   monitor_info_t *info = get_monitor_info();
-  update_by_monitor(info);
-}
-
-extern void home_scr_update();
-static void update_by_monitor(monitor_info_t *info) 
-{
-  int ret;
-  if(info->request_cnt % 5 == 0) {
-    ret = read_info_from_shell(1);
-  } else {
-    ret = read_info_from_shell(0);
-  }
-  info->request_cnt++;
-  if (0 != ret) {
-    fprintf(stderr, "curl ret=%d\n", ret);
-    return;
-  }
-  home_scr_update();
+  pthread_mutex_lock(&g_mutex);
+  memcpy(info, &s_monitor_info3, sizeof(monitor_info_t));
+  pthread_mutex_unlock(&g_mutex);
+  home_scr_update(&guider_ui, info);
 }
 
 int main(void)

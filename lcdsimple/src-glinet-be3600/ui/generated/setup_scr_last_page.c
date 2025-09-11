@@ -18,6 +18,7 @@
 
 void setup_scr_last_page(lv_ui *ui)
 {
+    printf("setup last page\n");
     //Write codes last_page
     ui->last_page = lv_obj_create(NULL);
     lv_obj_set_size(ui->last_page, 284, 100);
@@ -491,7 +492,7 @@ void setup_scr_last_page(lv_ui *ui)
     lv_obj_set_style_shadow_width(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of last_page.
-
+    ui->curr_page = PAGE_3;
 
     //Update current screen layout.
     lv_obj_update_layout(ui->last_page);

@@ -104,6 +104,16 @@ void init_keyboard(lv_ui *ui)
 }
 
 static void get_date(char* date, char* time);
-void home_scr_update(void)
+void home_scr_update(lv_ui *ui, monitor_info_t* info)
 {
+    enum Page curr = ui->curr_page;
+    if (curr == PAGE_0) {
+        printf("first page\n");
+    } else if(curr == PAGE_1) {
+        printf("ip page\n");
+    } else if(curr == PAGE_2) {
+        printf("net page\n");
+    } else {
+        printf("last page\n");
+    }
 }

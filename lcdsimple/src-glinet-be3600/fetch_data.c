@@ -22,7 +22,7 @@ static int shell_with_pipe(char *cmd, char *buf, int len)
     return ret == NULL ? -1 : 0;
 }
 
-int read_info_from_shell(int use_disk) 
+int read_info_from_shell(monitor_info_t *info, int use_disk) 
 {
   char buf[16*1024];
   int err = 0, i, size;
@@ -31,7 +31,7 @@ int read_info_from_shell(int use_disk)
   char *with_disk_str = "curl --fail --silent --max-time 3 --unix-socket /var/run/quickstart/local.sock http://localhost/api/lcd/simple/";
   char *without_disk_str = "curl --fail --silent --max-time 3 --unix-socket /var/run/quickstart/local.sock http://localhost/api/lcd/simple/?disk=0";
   char *tmpc = NULL;
-  monitor_info_t *info = &s_monitor_info;
+  //monitor_info_t *info = &s_monitor_info;
   if (use_disk) {
     err = shell_with_pipe(with_disk_str, buf, 16*1024-1);
   } else {
