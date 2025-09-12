@@ -149,28 +149,77 @@ void init_keyboard(lv_ui *ui)
 }
 
 static void get_date(char* date, char* time);
-void scr_update_page1(lv_ui *ui, monitor_info_t* info) {
+void scr_update_page1(lv_ui *ui, monitor_info_t* info) { 
+    char buf[256]; 
+    char date_str[16], time_str[16]; 
+    
+    /* if (!info->docker_ok) { 
+        lv_label_set_text(ui->First_page_label_2, "Docker未运行"); 
+    } else if (!info->linkease_ok) { 
+        lv_label_set_text(ui->First_page_label_2, "易有云未运行"); 
+    } else { 
+        lv_label_set_text(ui->First_page_label_2, "iStoreOS"); 
+    } */
+
     if('\0' == info->net_err[0]) {
-        printf("set conn yes\n");
         lv_label_set_text(ui->First_page_label_6, "已联网");
         lv_obj_clear_flag(ui->First_page_img_1, LV_OBJ_FLAG_HIDDEN);
     } else {
-        printf("set no conn\n");
         lv_label_set_text(ui->First_page_label_6, info->net_err);
         lv_obj_add_flag(ui->First_page_img_1, LV_OBJ_FLAG_HIDDEN);
     }
+    get_date(date_str, time_str);
+    lv_label_set_text(ui->First_page_label_4, time_str);
+    lv_label_set_text(ui->First_page_label_5, date_str); 
+    lv_label_set_text(ui->First_page_label_7, info->uptime_human);
+    
+    sprintf(buf, "%d", info->devices); 
+    lv_label_set_text(ui->First_page_label_9, buf); 
+    
 }
 
 void scr_update_page2(lv_ui *ui, monitor_info_t* info) {
+    char buf[256]; 
+    sprintf(buf, "IPv4: %s", info->ipv4);
+    lv_label_set_text(ui->IP_page_label_6, buf); 
+
+    sprintf(buf, "IPv6: %s", info->ipv6); 
+    lv_label_set_text(ui->IP_page_label_5, buf);
     
+    sprintf(buf, "DNS: %s", info->dns); 
+    lv_label_set_text(ui->IP_page_label_7, buf);
 }
 
-void scr_update_page3(lv_ui *ui, monitor_info_t* info) {
-    
+void scr_update_page3(lv_ui *ui, monitor_info_t* info) { 
+    char buf[256]; 
+    sprintf(buf, "%s/s", info->upload_str); 
+    lv_label_set_text(ui->ExNet_page_label_12, buf); 
+    sprintf(buf, "%s/s", info->download_str); 
+    lv_label_set_text(ui->ExNet_page_label_13, buf); 
+    lv_label_set_text(ui->ExNet_page_label_8, info->public_ipv4);
+    if (0 == info->foreign_link) { 
+    } else { 
+    }
 }
 
 void scr_update_page4(lv_ui *ui, monitor_info_t* info) {
+    char buf[256]; 
+    int i;
+
+    sprintf(buf, "%d%%", info->cpu); 
+    lv_label_set_text(ui->last_page_label_14, buf);
+    lv_arc_set_value(ui->last_page_arc_1, 100-info->cpu); 
     
+    sprintf(buf, "%d℃", info->temperature); 
+    lv_label_set_text(ui->last_page_label_7, buf);
+    if (info->temperature > 200) { 
+        i = 100; 
+    } else if (info->temperature > 100) { 
+        i = 90+(info->temperature-90)*10/100; 
+    } else { 
+        i = info->temperature; 
+    } 
+    lv_arc_set_value(ui->last_page_arc_2, 100-i);
 }
 
 void home_scr_update(lv_ui *ui, monitor_info_t* info)

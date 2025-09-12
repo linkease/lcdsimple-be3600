@@ -348,7 +348,7 @@ void setup_scr_ExNet_page(lv_ui *ui)
     ui->ExNet_page_label_12 = lv_label_create(ui->ExNet_page);
     lv_obj_set_pos(ui->ExNet_page_label_12, 202, 52);
     lv_obj_set_size(ui->ExNet_page_label_12, 50, 9);
-    lv_label_set_text(ui->ExNet_page_label_12, "1 KB/s");
+    lv_label_set_text(ui->ExNet_page_label_12, "0 KB/s");
     lv_label_set_long_mode(ui->ExNet_page_label_12, LV_LABEL_LONG_WRAP);
 
     //Write style for ExNet_page_label_12, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -371,7 +371,7 @@ void setup_scr_ExNet_page(lv_ui *ui)
     ui->ExNet_page_label_13 = lv_label_create(ui->ExNet_page);
     lv_obj_set_pos(ui->ExNet_page_label_13, 202, 34);
     lv_obj_set_size(ui->ExNet_page_label_13, 50, 9);
-    lv_label_set_text(ui->ExNet_page_label_13, "1 KB/s");
+    lv_label_set_text(ui->ExNet_page_label_13, "0 KB/s");
     lv_label_set_long_mode(ui->ExNet_page_label_13, LV_LABEL_LONG_WRAP);
 
     //Write style for ExNet_page_label_13, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -470,7 +470,7 @@ void setup_scr_ExNet_page(lv_ui *ui)
     ui->ExNet_page_label_16 = lv_label_create(ui->ExNet_page);
     lv_obj_set_pos(ui->ExNet_page_label_16, 229, 7);
     lv_obj_set_size(ui->ExNet_page_label_16, 40, 16);
-    lv_label_set_text(ui->ExNet_page_label_16, "谷歌连接");
+    lv_label_set_text(ui->ExNet_page_label_16, "外网连接");
     lv_label_set_long_mode(ui->ExNet_page_label_16, LV_LABEL_LONG_WRAP);
 
     //Write style for ExNet_page_label_16, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.

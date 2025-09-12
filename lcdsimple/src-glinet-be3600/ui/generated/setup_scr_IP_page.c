@@ -210,7 +210,7 @@ void setup_scr_IP_page(lv_ui *ui)
     ui->IP_page_label_5 = lv_label_create(ui->IP_page);
     lv_obj_set_pos(ui->IP_page_label_5, 18, 51);
     lv_obj_set_size(ui->IP_page_label_5, 250, 11);
-    lv_label_set_text(ui->IP_page_label_5, "IPv6 : xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx");
+    lv_label_set_text(ui->IP_page_label_5, "IPv6: ");
     lv_label_set_long_mode(ui->IP_page_label_5, LV_LABEL_LONG_WRAP);
 
     //Write style for IP_page_label_5, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -233,7 +233,7 @@ void setup_scr_IP_page(lv_ui *ui)
     ui->IP_page_label_6 = lv_label_create(ui->IP_page);
     lv_obj_set_pos(ui->IP_page_label_6, 18, 33);
     lv_obj_set_size(ui->IP_page_label_6, 128, 9);
-    lv_label_set_text(ui->IP_page_label_6, "IPv4 : 192.168.100.1");
+    lv_label_set_text(ui->IP_page_label_6, "IPv4: ");
     lv_label_set_long_mode(ui->IP_page_label_6, LV_LABEL_LONG_WRAP);
 
     //Write style for IP_page_label_6, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.

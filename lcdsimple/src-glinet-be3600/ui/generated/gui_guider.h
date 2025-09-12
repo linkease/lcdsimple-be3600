@@ -32,6 +32,12 @@ enum Page {
     PAGE_4 = 4
 };
 
+typedef struct disk_label_ {
+  lv_obj_t *name;
+  lv_obj_t *used;
+  lv_obj_t *bar;
+} disk_label_t;
+
 typedef struct
 {
 	lv_obj_t *First_page;

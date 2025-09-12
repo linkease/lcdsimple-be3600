@@ -58,7 +58,7 @@ void setup_scr_First_page(lv_ui *ui)
     ui->First_page_label_2 = lv_label_create(ui->First_page);
     lv_obj_set_pos(ui->First_page_label_2, 6, 5);
     lv_obj_set_size(ui->First_page_label_2, 90, 11);
-    lv_label_set_text(ui->First_page_label_2, "错误信息提示区域");
+    lv_label_set_text(ui->First_page_label_2, "iStoreOS");
     lv_label_set_long_mode(ui->First_page_label_2, LV_LABEL_LONG_WRAP);
 
     //Write style for First_page_label_2, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -106,7 +106,7 @@ void setup_scr_First_page(lv_ui *ui)
     ui->First_page_label_4 = lv_label_create(ui->First_page);
     lv_obj_set_pos(ui->First_page_label_4, 97, 5);
     lv_obj_set_size(ui->First_page_label_4, 90, 11);
-    lv_label_set_text(ui->First_page_label_4, "12：09");
+    lv_label_set_text(ui->First_page_label_4, "00：00");
     lv_label_set_long_mode(ui->First_page_label_4, LV_LABEL_LONG_WRAP);
 
     //Write style for First_page_label_4, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -260,7 +260,7 @@ void setup_scr_First_page(lv_ui *ui)
     ui->First_page_label_9 = lv_label_create(ui->First_page);
     lv_obj_set_pos(ui->First_page_label_9, 198, 21);
     lv_obj_set_size(ui->First_page_label_9, 16, 32);
-    lv_label_set_text(ui->First_page_label_9, "4");
+    lv_label_set_text(ui->First_page_label_9, "0");
     lv_label_set_long_mode(ui->First_page_label_9, LV_LABEL_LONG_WRAP);
 
     //Write style for First_page_label_9, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
