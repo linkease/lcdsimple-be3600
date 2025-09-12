@@ -13,9 +13,11 @@
 #include "events_init.h"
 #include "widgets_init.h"
 #include "custom.h"
+#include "fetch_data.h"
 
 
 
+extern void scr_update_page1(lv_ui *ui, monitor_info_t* info);
 void setup_scr_First_page(lv_ui *ui)
 {
     printf("setup first page\n");
@@ -286,5 +288,7 @@ void setup_scr_First_page(lv_ui *ui)
     lv_obj_update_layout(ui->First_page);
 
     //Init events for screen.
-    events_init_First_page(ui);
+    events_init_First_page(ui); 
+    
+    scr_update_page1(ui, get_monitor_info());
 }

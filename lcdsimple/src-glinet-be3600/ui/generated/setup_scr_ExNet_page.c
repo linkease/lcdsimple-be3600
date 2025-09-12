@@ -13,9 +13,11 @@
 #include "events_init.h"
 #include "widgets_init.h"
 #include "custom.h"
+#include "fetch_data.h"
 
 
 
+extern void scr_update_page3(lv_ui *ui, monitor_info_t* info);
 void setup_scr_ExNet_page(lv_ui *ui)
 {
     printf("setup exnet page\n");
@@ -256,7 +258,7 @@ void setup_scr_ExNet_page(lv_ui *ui)
     ui->ExNet_page_label_8 = lv_label_create(ui->ExNet_page);
     lv_obj_set_pos(ui->ExNet_page_label_8, 53, 33);
     lv_obj_set_size(ui->ExNet_page_label_8, 80, 9);
-    lv_label_set_text(ui->ExNet_page_label_8, "41.164.11.44");
+    lv_label_set_text(ui->ExNet_page_label_8, "-");
     lv_label_set_long_mode(ui->ExNet_page_label_8, LV_LABEL_LONG_WRAP);
 
     //Write style for ExNet_page_label_8, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -279,7 +281,7 @@ void setup_scr_ExNet_page(lv_ui *ui)
     ui->ExNet_page_label_9 = lv_label_create(ui->ExNet_page);
     lv_obj_set_pos(ui->ExNet_page_label_9, 53, 52);
     lv_obj_set_size(ui->ExNet_page_label_9, 80, 9);
-    lv_label_set_text(ui->ExNet_page_label_9, "default.com");
+    lv_label_set_text(ui->ExNet_page_label_9, "-");
     lv_label_set_long_mode(ui->ExNet_page_label_9, LV_LABEL_LONG_WRAP);
 
     //Write style for ExNet_page_label_9, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -470,14 +472,14 @@ void setup_scr_ExNet_page(lv_ui *ui)
     ui->ExNet_page_label_16 = lv_label_create(ui->ExNet_page);
     lv_obj_set_pos(ui->ExNet_page_label_16, 229, 7);
     lv_obj_set_size(ui->ExNet_page_label_16, 40, 16);
-    lv_label_set_text(ui->ExNet_page_label_16, "外网连接");
+    lv_label_set_text(ui->ExNet_page_label_16, "国际连接");
     lv_label_set_long_mode(ui->ExNet_page_label_16, LV_LABEL_LONG_WRAP);
 
     //Write style for ExNet_page_label_16, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
     lv_obj_set_style_border_width(ui->ExNet_page_label_16, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_radius(ui->ExNet_page_label_16, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_color(ui->ExNet_page_label_16, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->ExNet_page_label_16, &lv_font_SourceHanSansCN_Bold_10, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->ExNet_page_label_16, font_shs_10b, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui->ExNet_page_label_16, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_letter_space(ui->ExNet_page_label_16, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui->ExNet_page_label_16, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
@@ -520,4 +522,6 @@ void setup_scr_ExNet_page(lv_ui *ui)
 
     //Init events for screen.
     events_init_ExNet_page(ui);
+
+    scr_update_page3(ui, get_monitor_info());
 }

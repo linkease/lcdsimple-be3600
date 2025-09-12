@@ -13,9 +13,11 @@
 #include "events_init.h"
 #include "widgets_init.h"
 #include "custom.h"
+#include "fetch_data.h"
 
 
 
+extern void scr_update_page4(lv_ui *ui, monitor_info_t* info);
 void setup_scr_last_page(lv_ui *ui)
 {
     printf("setup last page\n");
@@ -268,7 +270,7 @@ void setup_scr_last_page(lv_ui *ui)
     ui->last_page_label_9 = lv_label_create(ui->last_page);
     lv_obj_set_pos(ui->last_page_label_9, 127, 33);
     lv_obj_set_size(ui->last_page_label_9, 44, 11);
-    lv_label_set_text(ui->last_page_label_9, "硬盘1:");
+    lv_label_set_text(ui->last_page_label_9, "硬盘2:");
     lv_label_set_long_mode(ui->last_page_label_9, LV_LABEL_LONG_WRAP);
 
     //Write style for last_page_label_9, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -291,7 +293,7 @@ void setup_scr_last_page(lv_ui *ui)
     ui->last_page_label_10 = lv_label_create(ui->last_page);
     lv_obj_set_pos(ui->last_page_label_10, 127, 53);
     lv_obj_set_size(ui->last_page_label_10, 44, 11);
-    lv_label_set_text(ui->last_page_label_10, "硬盘1:");
+    lv_label_set_text(ui->last_page_label_10, "硬盘3:");
     lv_label_set_long_mode(ui->last_page_label_10, LV_LABEL_LONG_WRAP);
 
     //Write style for last_page_label_10, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -314,7 +316,7 @@ void setup_scr_last_page(lv_ui *ui)
     ui->last_page_label_11 = lv_label_create(ui->last_page);
     lv_obj_set_pos(ui->last_page_label_11, 217, 53);
     lv_obj_set_size(ui->last_page_label_11, 60, 15);
-    lv_label_set_text(ui->last_page_label_11, "--/--");
+    lv_label_set_text(ui->last_page_label_11, "3G/3G");
     lv_label_set_long_mode(ui->last_page_label_11, LV_LABEL_LONG_WRAP);
 
     //Write style for last_page_label_11, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -337,7 +339,7 @@ void setup_scr_last_page(lv_ui *ui)
     ui->last_page_label_12 = lv_label_create(ui->last_page);
     lv_obj_set_pos(ui->last_page_label_12, 217, 33);
     lv_obj_set_size(ui->last_page_label_12, 60, 15);
-    lv_label_set_text(ui->last_page_label_12, "734G/848G");
+    lv_label_set_text(ui->last_page_label_12, "2G/2G");
     lv_label_set_long_mode(ui->last_page_label_12, LV_LABEL_LONG_WRAP);
 
     //Write style for last_page_label_12, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -360,7 +362,7 @@ void setup_scr_last_page(lv_ui *ui)
     ui->last_page_label_13 = lv_label_create(ui->last_page);
     lv_obj_set_pos(ui->last_page_label_13, 217, 13);
     lv_obj_set_size(ui->last_page_label_13, 60, 15);
-    lv_label_set_text(ui->last_page_label_13, "134G/848G");
+    lv_label_set_text(ui->last_page_label_13, "1G/1G");
     lv_label_set_long_mode(ui->last_page_label_13, LV_LABEL_LONG_WRAP);
 
     //Write style for last_page_label_13, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -499,4 +501,6 @@ void setup_scr_last_page(lv_ui *ui)
 
     //Init events for screen.
     events_init_last_page(ui);
+
+    scr_update_page4(ui, get_monitor_info());
 }
