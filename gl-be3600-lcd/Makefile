@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=gl-be3600-lcd
-PKG_VERSION:=1.0.5
+PKG_VERSION:=1.0.6
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
