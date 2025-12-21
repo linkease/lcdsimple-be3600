@@ -470,29 +470,6 @@ void setup_scr_last_page(lv_ui *ui)
     lv_obj_set_style_pad_left(ui->last_page_label_14, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_shadow_width(ui->last_page_label_14, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes last_page_dontouch
-    ui->last_page_dontouch = lv_label_create(ui->last_page);
-    lv_obj_set_pos(ui->last_page_dontouch, 0, 0);
-    lv_obj_set_size(ui->last_page_dontouch, 284, 76);
-    lv_label_set_text(ui->last_page_dontouch, "Label");
-    lv_label_set_long_mode(ui->last_page_dontouch, LV_LABEL_LONG_WRAP);
-
-    //Write style for last_page_dontouch, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->last_page_dontouch, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->last_page_dontouch, &lv_font_montserratMedium_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->last_page_dontouch, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->last_page_dontouch, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->last_page_dontouch, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-
     //The custom code of last_page.
     ui->curr_page = PAGE_4;
 

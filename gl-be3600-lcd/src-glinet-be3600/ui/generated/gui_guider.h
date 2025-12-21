@@ -117,7 +117,6 @@ typedef struct
 	lv_obj_t *last_page_bar_2;
 	lv_obj_t *last_page_bar_3;
 	lv_obj_t *last_page_label_14;
-	lv_obj_t *last_page_dontouch;
 	enum Page curr_page;
 }lv_ui;
 
