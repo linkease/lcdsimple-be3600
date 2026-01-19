@@ -14,10 +14,15 @@
 #include "gui_guider.h"
 
 #define DISP_BUF_SIZE (76*284)
+#define SCREEN_IDLE_MS (30 * 1000)
+#define SCREEN_CHECK_PERIOD_MS 1000
 
 lv_ui guider_ui = {0};
 lv_timer_t *timer;
 static void my_timer(lv_timer_t * _x);
+static void screen_idle_timer(lv_timer_t * _x);
+static lv_display_t *g_disp = NULL;
+static bool g_screen_blank = false;
 
 static const char *getenv_default(const char *name, const char *dflt)
 {
@@ -25,10 +30,47 @@ static const char *getenv_default(const char *name, const char *dflt)
 }
 
 #if LV_USE_LINUX_FBDEV
+static void sysfs_write(const char *path, const char *value)
+{
+    if(path == NULL || value == NULL) return;
+    int fd = open(path, O_WRONLY);
+    if(fd < 0) return;
+    (void)write(fd, value, strlen(value));
+    (void)close(fd);
+}
+
+static void screen_set_blank(bool blank)
+{
+    if(g_disp == NULL) return;
+    if(blank == g_screen_blank) return;
+
+    const char *blank_path = getenv_default("BE3600_FB_BLANK_PATH",
+        "/sys/devices/platform/soc/78b5000.spi/spi_master/spi0/spi0.0/graphics/fb0/blank");
+    const char *backlight_path = getenv_default("BE3600_BACKLIGHT_PATH",
+        "/sys/class/backlight/soc:backlight/brightness");
+    const char *backlight_on = getenv_default("BE3600_BACKLIGHT_ON", "6");
+    const char *backlight_off = getenv_default("BE3600_BACKLIGHT_OFF", "0");
+
+    if(blank) {
+        printf("setup first page: enter sleep\n");
+        lv_linux_fbdev_set_blank(g_disp);
+        sysfs_write(blank_path, "1");
+        sysfs_write(backlight_path, backlight_off);
+    } else {
+        printf("setup first page: wake up\n");
+        lv_linux_fbdev_set_unblank(g_disp);
+        sysfs_write(blank_path, "0");
+        sysfs_write(backlight_path, backlight_on);
+    }
+
+    g_screen_blank = blank;
+}
+
 static void lv_linux_disp_init(void)
 {
     const char *device = getenv_default("LV_LINUX_FBDEV_DEVICE", "/dev/fb0");
     lv_display_t * disp = lv_linux_fbdev_create();
+    g_disp = disp;
 
     static lv_color_t sbuf0[DISP_BUF_SIZE], sbuf1[DISP_BUF_SIZE];
     lv_display_set_buffers(disp,
@@ -105,6 +147,20 @@ static void my_timer(lv_timer_t * _x)
   home_scr_update(&guider_ui, info);
 }
 
+static void screen_idle_timer(lv_timer_t * _x)
+{
+  (void)(_x);
+#if LV_USE_LINUX_FBDEV
+  if(g_disp == NULL) return;
+  uint32_t inactive = lv_display_get_inactive_time(g_disp);
+  if(inactive >= SCREEN_IDLE_MS) {
+      screen_set_blank(true);
+  } else {
+      screen_set_blank(false);
+  }
+#endif
+}
+
 int main(void)
 {
     lv_init();
@@ -119,6 +175,7 @@ int main(void)
     pthread_create(&thread, NULL, read_data_thread, NULL);
 
     timer = lv_timer_create(my_timer, 2000, NULL);
+    lv_timer_create(screen_idle_timer, SCREEN_CHECK_PERIOD_MS, NULL);
 
     /*Handle LVGL tasks*/
     while(1) {
